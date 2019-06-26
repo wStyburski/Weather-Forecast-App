@@ -1,0 +1,163 @@
+.wrapper {
+  margin-top: 10rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+
+  .header {
+    padding: 0.25rem;
+    font-weight: 600;
+    font-size: 35px;
+    color: #118787;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .slider {
+    padding: 0.5rem;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        padding: 0.5rem;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .small-image {
+      width: 110px;
+      height: 50px;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .active {
+      opacity: 0.5;
+    }
+  }
+
+  image {
+    padding: 0.5rem;
+  }
+
+  .roll-up {
+    clear: both;
+    cursor: pointer;
+    padding: 0.75rem;
+
+    &:hover {
+      transform: scale(2);
+    }
+  }
+
+  .weather {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .error {
+      color: #8a0000;
+    }
+
+    .weather-city {
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      .weather-city-input {
+        width: 35%;
+        height: 25px;
+        padding: 0.75rem;
+      }
+
+      input[type="text"] {
+        border: none;
+        border-bottom: 1px solid #000;
+        font-size: 30px;
+        text-align: center;
+
+        &:hover,
+        &:focus {
+          outline: none;
+          opacity: 0.5;
+        }
+      }
+
+      .weather-city-icon {
+        margin-left: 0.25rem;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(2);
+        }
+      }
+    }
+
+    .weather-details {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      align-items: center;
+
+      .weather-details-params {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        cursor: default;
+        padding: 0.5rem;
+
+        &:hover {
+          opacity: 0.5;
+        }
+
+        i {
+          margin-right: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .wrapper {
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+    .weather {
+      .weather-city {
+        .weather-city-input {
+          width: 50%;
+          height: 15px;
+        }
+
+        input[type="text"] {
+          font-size: 20px;
+        }
+      }
+      .weather-details{
+        margin-top: 1rem;
+      }
+    }
+  }
+}

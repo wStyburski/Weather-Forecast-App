@@ -1,0 +1,64 @@
+<div class="wrapper">
+  <div class="slider hidden" [class.hidden]="silderHide === true">
+    <ul>
+      <li *ngFor="let item of images; let i = index">
+        <img [src]="item" class="small-image" [class.active]="imageIndex === i" (click)="ChangeImage(i)">
+      </li>
+    </ul>
+  </div>
+  <div class="image hidden" [class.hidden]="silderHide === true">
+    <img [src]="images[imageIndex]">
+  </div>
+  <!-- <div class="roll-up" (click)="HideSlider()">
+    <i class="material-icons">swap_vert</i>
+    <i class="material-icons">swap_horiz</i>
+  </div> -->
+  <!-- <div class="header">
+    Pogoda w Twoim mieście!
+  </div> -->
+  <div class="weather">
+    <div class="weather-city" *ngIf="geoLocationData">
+      <input class="weather-city-input" type="text" [(ngModel)]="geoLocationData.city">
+      <i class="material-icons weather-city-icon" (click)="ShowWeatherDetails()">search</i>
+    </div>
+    <div class="error" *ngIf="error">
+      <ng-container *ngIf="error === 'city not found';else anotherError">
+        Nie znaleziono podanego miasta.
+      </ng-container>
+      <ng-template #anotherError>
+        Błąd odpowiedzi serwera, spróbuj ponownie później.
+      </ng-template>
+    </div>
+    <div class="weather-details" *ngIf="weatherData && (!error || error === '')">
+      <div class="weather-details-params">
+        <div class="weather-details-params-icon">
+          <i class="material-icons">wb_sunny</i>
+        </div>
+        <div> Temperatura {{weatherData.main.temp}} °C</div>
+      </div>
+      <div class="weather-details-params">
+        <i class="material-icons">timeline</i>
+        <span> Ciśnienie {{weatherData.main.pressure}} HPa </span>
+      </div>
+      <div class="weather-details-params">
+        <i class="material-icons">report</i>
+        <span>
+          Wilgotność {{weatherData.main.humidity}} %
+        </span>
+      </div>
+      <div class="weather-details-params">
+        <i class="material-icons">trending_down</i>
+        <span>
+          Temperatura min. {{weatherData.main.temp_min}} °C
+        </span>
+      </div>
+      <div class="weather-details-params">
+        <i class="material-icons">trending_up</i>
+        <span>
+          Temperatura max. {{weatherData.main.temp_max}} °C
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
